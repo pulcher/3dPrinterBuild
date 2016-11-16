@@ -1,0 +1,18 @@
+------ Start print gcode
+G92 E0; set extruder value back to 0
+G28 ; home all axes
+G1 Z5 F5000 ; lift nozzle
+------ End starting gcode
+
+------ Start ending gcode
+G92 E0; set extruder value back to 0
+G91 ; use relative coordinates
+G1 E-8 Z4 F3600 ; retract filament 8mm and lift Z 4mm
+M104 S0 ; turn off extruder
+M140 S0 ; turn off bed
+G90 ; use absolute coordinates
+G0 Y270 F1800 ; push out the tray
+M107 ; disable fan
+M84 ; disable steppers
+M117 Done. Let it cool.
+------ End ending gcode
